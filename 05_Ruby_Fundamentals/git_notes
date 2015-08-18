@@ -1,0 +1,11 @@
+#git pull upstream master
+
+#what is git stash do
+#$ git reset --hard upstream/master
+#$ git push origin master -f
+#$ ./pull_upstream.sh
+
+
+
+
+
