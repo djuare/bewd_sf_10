@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #1 - Pull the json from the reddit API via http://www.reddit.com/.json
 # - http://mashable.com/stories.json (homework)
 # - http://digg.com/api/news/popular.json (Homework)
@@ -99,3 +100,36 @@ print_stories(stories_mash)
 # refer to the structure of the hash under create_story_hash def
 # one we get the title, we will ask for the category
 # category input gets.strip
+=======
+require 'pry'
+require 'rest-client'
+require 'json'
+
+def connect_to_api(url)
+  response = RestClient.get(url)
+  json_response = JSON.parse(response)
+  find_stories(json_response)
+end
+
+def find_stories(json_response)
+  stories = json_response["hot"]
+  print_stories(stories)
+end
+
+def print_stories(stories)
+  #deletes watercooler stories
+  stories = stories.delete_if {|story| story["channel"] == "Watercooler"}
+  #creates hash for non-watercooler stories
+  stories.each do |story|
+   create_story_hash(story)
+  end
+  puts "I have #{stories.count}. It excludes the Watercooler category "
+end
+
+def create_story_hash(story)
+  {title: story["title"], category: story["channel"], upvotes: story["shares"]["total"]}
+end
+
+mashable_url =  "http://mashable.com/stories.json"
+connect_to_api(mashable_url)
+>>>>>>> 43d933dfc339dccb02a330db173fa830015e4326
