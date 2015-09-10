@@ -1,3 +1,17 @@
+#<%= @book.inspect %>
+<div class="col-xs-12">
+
+<h1 style="color:#cc3333;"> Our Book Collection </h1>
+
+<div class="well">
 <%= simple_form_for @book do |f| %>
-  <%= f.button :submit %>
-<% end %>
+<%= f.input :title, label:false, input_html: {placeholder: "Title"} %>
+<%= f.input :author, label:false, input_html: {placeholder: "Author"} %>
+<%= f.input :genre, label:false, input_html: {placeholder: "Genre"} %>
+<%= f.input :image_url, label:false, input_html: {placeholder:"Image_url"} %>
+<%= f.submit "Submit".html_safe, class:'btn btn-lg btn-danger'%>
+
+<%end %>
+</div>
+
+</div>

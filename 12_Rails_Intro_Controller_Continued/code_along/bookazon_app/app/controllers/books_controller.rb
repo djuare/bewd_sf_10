@@ -9,9 +9,16 @@ class BooksController < ApplicationController
   end
 
   def new
+    @book = Book.new
   end
 
   def create
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to book_path
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -26,5 +33,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
+    params.require(:book).permit(:title, :year_published, :author, :available, :genre, :image_url)
   end
 end
