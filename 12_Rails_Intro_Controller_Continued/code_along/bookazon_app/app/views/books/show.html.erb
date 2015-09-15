@@ -1,2 +1,12 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="col-xs-12">
+  <div class="row-fluid">
+<h1 style="color=#666666"><%= @book.title%></h1>
+<ul><%= image_tag(@book.image_url, class: image_url) %></ul>
+<ul><%= @book.author %></ul>
+<%= @book.year_published %>
+</div>
+<div class="row-fluid">
+  <%=link_to "All Books", books_path(@books), class: 'btn btn-lg btn-primary'%>
+  <%=link_to "Edit Book", books_path(@books), class: 'btn btn-lg btn-primary'%>
+</div>
+</div>
