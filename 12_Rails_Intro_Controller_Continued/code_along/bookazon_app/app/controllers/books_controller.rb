@@ -1,12 +1,15 @@
 class BooksController < ApplicationController
 
-  #READ: this will retrieve all books thru active_record
   def index
     @books = Book.all
   end
 
   def show
+<<<<<<< HEAD
     @book = Book.find(params[:id])
+=======
+    @book = get_book
+>>>>>>> c93e07862b3941d651202b43986e96353a3e225a
   end
 
   def new
@@ -24,12 +27,24 @@ class BooksController < ApplicationController
 
   def edit
     @book = get_book
+<<<<<<< HEAD
 
   end
 
   def update
     @books = get_book
     if @book.update(book_params)
+=======
+  end
+
+  def update
+    @book = get_book
+    if @book.update(book_params)
+      redirect_to book_path(@book)
+    else
+      render 'edit'
+    end
+>>>>>>> c93e07862b3941d651202b43986e96353a3e225a
   end
 
   def destroy
@@ -42,6 +57,10 @@ class BooksController < ApplicationController
   end
 
   def get_book
+<<<<<<< HEAD
     @book = Book.find(params[:id])
+=======
+    Book.find(params[:id])
+>>>>>>> c93e07862b3941d651202b43986e96353a3e225a
   end
 end
